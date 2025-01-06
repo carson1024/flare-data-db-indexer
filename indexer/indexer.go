@@ -170,17 +170,17 @@ func (ci *BlockIndexer) processAndSave(
 ) error {
 	startTime := time.Now()
 
-	logger.Info(
-		"Processed %d histories in %d milliseconds",
-		len(bBatch.Histories),
-		time.Since(startTime).Milliseconds(),
-	)
-
 	// Push transactions and logs in the database
 	err := ci.saveData(bBatch, states, lastDBIndex, lastDBTimestamp)
 	if err != nil {
 		return errors.Wrap(err, "ci.saveData")
 	}
+
+	logger.Info(
+		"Processed %d histories in %d milliseconds",
+		len(bBatch.Histories),
+		time.Since(startTime).Milliseconds(),
+	)
 
 	return nil
 }
