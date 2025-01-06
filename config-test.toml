@@ -17,7 +17,7 @@ username = "postgres"
 password = "1qazxsw2#EDC123456789"
 
 [destdb]
-host = "127.0.0.1"
+host = "95.216.35.206"
 port = 5432
 database = "postgres"
 schema = "public"
