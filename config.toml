@@ -4,7 +4,7 @@
 [indexer]
 start_index = 0
 new_block_check_millis = 1000
-batch_size = 1000
+batch_size = 10000
 num_parallel_req = 10
 log_range = 10
 
@@ -24,7 +24,7 @@ schema = "public"
 username = "postgres"
 password = "1qazxsw2#EDC123456789"
 log_queries = false
-history_drop = 604800           # 7 days
+history_drop = 86400           # 7 days
 drop_table_at_start = true
 
 [logger]
