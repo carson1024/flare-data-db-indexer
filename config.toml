@@ -24,7 +24,7 @@ schema = "public"
 username = "postgres"
 password = "1qazxsw2#EDC123456789"
 log_queries = false
-history_drop = 86400           # 7 days
+history_drop = 259200           # 7 days
 drop_table_at_start = true
 
 [logger]
