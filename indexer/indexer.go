@@ -107,7 +107,7 @@ func (ci *BlockIndexer) obtainBlocksBatch(
 	_ = batchSize
 	bBatch := newDatabaseStructData()
 
-	err := ci.srcdb.WithContext(ctx).Where("id BETWEEN ? AND ?", firstBlockNumber, lastBlockNumInRound).Find(bBatch.Histories).Error
+	err := ci.srcdb.WithContext(ctx).Where("id BETWEEN ? AND ?", firstBlockNumber, lastBlockNumInRound).Find(&bBatch.Histories).Error
 	if err != nil {
 		return nil, errors.Wrap(err, "Error fetching histories batch")
 	}

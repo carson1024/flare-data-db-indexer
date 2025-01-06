@@ -13,15 +13,15 @@ host = "95.216.64.174"
 port = 5432
 database = "postgres"
 schema = "flare"
-username = "root"
+username = "postgres"
 password = "1qazxsw2#EDC123456789"
 
 [destdb]
 host = "95.216.35.206"
-port = 3306
+port = 5432
 database = "postgres"
 schema = "public"
-username = "root"
+username = "postgres"
 password = "1qazxsw2#EDC123456789"
 log_queries = false
 history_drop = 604800           # 7 days

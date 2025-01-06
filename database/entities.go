@@ -13,3 +13,7 @@ type MarketHistory struct {
 	Timestamp uint64  `gorm:"not null"`
 	Tickers   *string `gorm:"type:text"` // Nullable, use pointer
 }
+
+func (MarketHistory) TableName() string {
+	return "market_history"
+}

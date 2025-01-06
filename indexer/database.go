@@ -13,7 +13,9 @@ type databaseStructData struct {
 }
 
 func newDatabaseStructData() *databaseStructData {
-	return &databaseStructData{}
+	return &databaseStructData{
+		Histories: []*database.MarketHistory{},
+	}
 }
 
 func (ci *BlockIndexer) saveData(

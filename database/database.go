@@ -10,6 +10,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
+	"gorm.io/gorm/schema"
 )
 
 const (
@@ -93,10 +94,14 @@ func storeTransactionID(db *gorm.DB) (err error) {
 
 func connect(ctx context.Context, cfg *config.DBConfig) (*gorm.DB, error) {
 	// Connect to the database
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable", cfg.Host, cfg.Username, cfg.Password, cfg.Database, cfg.Port)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d search_path=%s sslmode=disable", cfg.Host, cfg.Username, cfg.Password, cfg.Database, cfg.Port, cfg.Schema)
 
 	gormLogLevel := getGormLogLevel(cfg)
 	gormConfig := gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			TablePrefix:   cfg.Schema + ".", // Add schema prefix to all tables
+			SingularTable: true,             // Use singular table names
+		},
 		Logger:          gormlogger.Default.LogMode(gormLogLevel),
 		CreateBatchSize: DBTransactionBatchesSize,
 	}
